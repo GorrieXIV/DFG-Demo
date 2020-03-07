@@ -1,6 +1,6 @@
 import 'phaser';
-import { PlayerCharacter } from './player';
-import { Card } from './card';
+import { PlayerCharacter } from './Objects/player';
+import { Card } from './Objects/card';
 
 export default class TitleScreen extends Phaser.Scene
 {
