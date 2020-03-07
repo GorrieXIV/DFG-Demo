@@ -1,0 +1,22 @@
+{
+  "name": "dfg-demo",
+  "version": "1.0.0",
+  "description": "Demo for a deck-based fighting game concept.",
+  "main": "main.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GorrieXIV/DFG-Demo.git"
+  },
+  "author": "Arkell Tech Inc.",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GorrieXIV/DFG-Demo/issues"
+  },
+  "homepage": "https://github.com/GorrieXIV/DFG-Demo#readme",
+  "dependencies": {
+    "phaser": "^3.22.0"
+  }
+}
