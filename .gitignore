@@ -1,5 +1,6 @@
 # Build files
 dist/*.js
+dist/*.map
 
 # Node modules
 node_modules
