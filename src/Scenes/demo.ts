@@ -1,25 +1,20 @@
 ﻿import { Scene } from './base';
 import { PlayerCharacter, Card } from '../Objects';
 
-export class Demo extends Scene
-{
+export class Demo extends Scene {
 
-    preload()
-    {
-        // this.load.image('logo', 'assets/phaser3-logo.png');
-        // this.load.image('libs', 'assets/libs.png');
-        // this.load.glsl('bundle', 'assets/plasma-bundle.glsl.js');
-        // this.load.glsl('stars', 'assets/starfields.glsl.js');
+    preload() {
+        this.load.image('player', 'assets/fighter.jpg');
     }
 
-    create()
-    {
-        console.log("Demo");
+    create() {
+        let player:PlayerCharacter = new PlayerCharacter(this, 400, 300);
+        //let hand:Card[] = null;
         // this.add.shader('RGB Shift Field', 0, 0, 800, 600).setOrigin(0);
 
         // this.add.shader('Plasma', 0, 412, 800, 172).setOrigin(0);
 
-        // this.add.image(400, 300, 'libs');
+        this.add.image(400, 300, 'player');
 
         // const logo = this.add.image(400, 70, 'logo');
 
@@ -32,5 +27,4 @@ export class Demo extends Scene
         //     repeat: -1
         // })
     }
-
 }
