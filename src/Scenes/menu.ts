@@ -1,35 +1,40 @@
 ﻿import { Scene } from './base';
+import { game } from '../app';
 
 export class Menu extends Scene
 {
+    constructor()
+    {
+        super('Menu');
+    }
 
     preload()
     {
-        // this.load.image('logo', 'assets/phaser3-logo.png');
-        // this.load.image('libs', 'assets/libs.png');
-        // this.load.glsl('bundle', 'assets/plasma-bundle.glsl.js');
-        // this.load.glsl('stars', 'assets/starfields.glsl.js');
+        this.loadImages();
     }
 
     create()
     {
-        console.log("Menu");
-        // this.add.shader('RGB Shift Field', 0, 0, 800, 600).setOrigin(0);
+        this.addImagesToCanvas();
+    }
 
-        // this.add.shader('Plasma', 0, 412, 800, 172).setOrigin(0);
+    loadImages()
+    {
+        this.load.image('title', 'assets/titlecard.jpg');
+        this.load.image('start', 'assets/startbutton.jpg');
+    }
 
-        // this.add.image(400, 300, 'libs');
+    addImagesToCanvas()
+    {
+        this.add.image(this.gameWidth / 2, this.gameHeight / 2, 'title');
+        this.add.image(this.gameWidth / 2, this.gameHeight / 2, 'start')
+            .setInteractive()
+            .on('pointerdown', this.moveToDemoScene, this);
+    }
 
-        // const logo = this.add.image(400, 70, 'logo');
-
-        // this.tweens.add({
-        //     targets: logo,
-        //     y: 350,
-        //     duration: 1500,
-        //     ease: 'Sine.inOut',
-        //     yoyo: true,
-        //     repeat: -1
-        // })
+    moveToDemoScene()
+    {
+        this.scene.start("Demo");
     }
 
 }
