@@ -1,5 +1,6 @@
 import 'phaser';
-import { PlayerCharacter } from './Player/playercharacter';
+import { PlayerCharacter } from './Objects/player';
+import { Card } from './Objects/card';
 
 export default class TitleScreen extends Phaser.Scene
 {
@@ -35,6 +36,7 @@ export default class TitleScreen extends Phaser.Scene
         //     repeat: -1
         // })
         let player:PlayerCharacter = new PlayerCharacter();
+        let card:Card = new Card();
     }
 
 }
