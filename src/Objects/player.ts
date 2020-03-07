@@ -1,5 +1,4 @@
-export class PlayerCharacter
-{
+export class PlayerCharacter{
     constructor ()
     {
         console.log('player constructed');
