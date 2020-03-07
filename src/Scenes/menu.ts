@@ -3,7 +3,11 @@ import { game } from '../app';
 
 export class Menu extends Scene
 {
-    
+    constructor()
+    {
+        super('Menu');
+    }
+
     preload()
     {
         this.loadImages();
@@ -25,7 +29,7 @@ export class Menu extends Scene
         this.add.image(this.gameWidth / 2, this.gameHeight / 2, 'title');
         this.add.image(this.gameWidth / 2, this.gameHeight / 2, 'start')
             .setInteractive()
-            .on('pointerdown', this.moveToDemoScene);
+            .on('pointerdown', this.moveToDemoScene, this);
     }
 
     moveToDemoScene()
