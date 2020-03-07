@@ -1,5 +1,5 @@
 ﻿import { Scene } from './base';
-import { Player, Card } from '../Objects';
+import { PlayerCharacter, Card } from '../Objects';
 
 export class Demo extends Scene
 {
