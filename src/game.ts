@@ -1,4 +1,5 @@
 import 'phaser';
+import { PlayerCharacter } from './Player/playercharacter';
 
 export default class TitleScreen extends Phaser.Scene
 {
@@ -33,6 +34,7 @@ export default class TitleScreen extends Phaser.Scene
         //     yoyo: true,
         //     repeat: -1
         // })
+        let player:PlayerCharacter = new PlayerCharacter();
     }
 
 }
