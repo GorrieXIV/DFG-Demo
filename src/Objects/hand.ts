@@ -11,13 +11,14 @@ export class Hand extends GameObject {
 
     constructor(scene: Scene, x: number, y: number) {
         super(scene, 'hand', x, y, false);
-        scene.events.on('playcard', this.replayCard, this);
+        scene.events.on('playcard', this.replaceCard, this);
     }
 
-    public replayCard(index: number)
+    public replaceCard(card: AttackCard)
     {
-        this.cards[index] = null;
-        this.draw();
+        console.log("DELETE THIS CARD")
+        console.log(card);
+        //do magic here
     }
 
     public emptyHand()
