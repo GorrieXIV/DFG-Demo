@@ -1,4 +1,4 @@
-import { GameObject } from './base';
+import { CharacterGameObject } from './base';
 import { Scene } from '../Scenes/base';
 
 export class Sandbag extends CharacterGameObject {
