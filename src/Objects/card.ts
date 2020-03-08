@@ -26,7 +26,7 @@ export class WeakAttackCard extends Card {
         this.cooldown = 2;
         this.sprite.setInteractive().on('pointerdown', () => {
             console.log('registering weak attack')
-            this.emit('weakattack', this)
+            scene.events.emit('weakattack', this)
         });
     }
 }
@@ -40,7 +40,7 @@ export class StrongAttackCard extends Card {
         this.cooldown = 3;
         this.sprite.setInteractive().on('pointerdown', () => {
             console.log('registering strong attack')
-            this.emit('strongattack', this)
+            scene.events.emit('strongattack', this)
         });
     }
 }
@@ -54,7 +54,7 @@ export class GrabCard extends Card {
         this.cooldown = 1;
         this.sprite.setInteractive().on('pointerdown', () => {
             console.log('registering grab')
-            this.emit('grab', this)
+            scene.events.emit('grab', this)
         });
     }
 }

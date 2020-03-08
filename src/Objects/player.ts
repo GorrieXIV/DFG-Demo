@@ -5,9 +5,9 @@ export class PlayerCharacter extends CharacterGameObject {
     constructor(scene: Scene, x: number, y: number) {
         super(scene, 'fighter', x, y);
 
-        this.on('weakattack', this.performWeakAttack, this);
-        this.on('strongattack', this.performStrongAttack, this);
-        this.on('grab', this.performGrab, this);
+        scene.events.on('weakattack', this.performWeakAttack, this);
+        scene.events.on('strongattack', this.performStrongAttack, this);
+        scene.events.on('grab', this.performGrab, this);
 
     }
 
