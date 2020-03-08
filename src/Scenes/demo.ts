@@ -10,7 +10,7 @@ export class Demo extends Scene {
         this.load.image('sandbagHpBar', 'assets/sandbagHpBar.jpg');
         this.load.image('weakattackcard', 'assets/weakattackcard.jpg');
         this.load.image('strongattackcard', 'assets/strongattackcard.jpg');
-        this.load.image('grabattackcard', 'assets/grabattackcard.jpg');
+        this.load.image('grabcard', 'assets/grabcard.jpg');
         this.load.image('exitbutton', 'assets/exitbutton.jpg');
     }
 
