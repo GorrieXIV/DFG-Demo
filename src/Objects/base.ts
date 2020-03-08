@@ -13,8 +13,14 @@ export class GameObject extends Phaser.GameObjects.GameObject {
         this.position.y = y;
         this.scene = scene;
 
-        scene.add.sprite(x, y, type);
+        this.scene.add.sprite(x, y, type);
 
         console.log(`${type} constructed at ${this.position}`);
+    }
+
+    public move(x: number, y: number) {
+        this.position.x += x;
+        this.position.y += y;
+        this.scene.add.sprite(this.position.x, this.position.y, this.type); 
     }
 }

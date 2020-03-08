@@ -28,7 +28,11 @@ export class Hand extends GameObject {
             {
                 if (!this.cards[i])
                 {
-                    this.cards[i] = new Card(this.scene, this.getPositionFromIndex(i), Hand.y)
+                    this.cards[i] = new Card(
+                        this.scene,
+                        this.getPositionFromIndex(i),
+                        this.position.y
+                    );
                     console.log(`draw card at position ${i}`);
                 }
             }

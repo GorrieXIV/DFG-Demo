@@ -2,6 +2,8 @@
 import { PlayerCharacter, Card, Hand } from '../Objects';
 
 export class Demo extends Scene {
+    player: PlayerCharacter = null;
+    hand: Hand = null;
 
     preload() {
         this.load.image('fighter', 'assets/fighter.jpg');
@@ -15,9 +17,9 @@ export class Demo extends Scene {
     }
 
     create() {
-        let player: PlayerCharacter = new PlayerCharacter(this, 400, 300);
-        let hand: Hand = new Hand(this, this.handPositionX, this.handPositionY);
-        hand.draw();
+        this.player = new PlayerCharacter(this, 400, 300);
+        this.hand = new Hand(this, this.handPositionX, this.handPositionY);
+        this.hand.draw();
     }
 
     private get handPositionX(): number
@@ -28,5 +30,9 @@ export class Demo extends Scene {
     private get handPositionY(): number
     {
         return this.gameHeight - this.handPositionX;
+    }
+
+    update() {
+        this.player.move(5, 5);
     }
 }
