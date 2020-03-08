@@ -1,9 +1,10 @@
 ﻿import { Scene } from './base';
-import { PlayerCharacter, Card, Hand } from '../Objects';
+import { PlayerCharacter, Sandbag, Card, Hand } from '../Objects';
 
 export class Demo extends Scene {
-    player: PlayerCharacter = null;
-    hand: Hand = null;
+    player:  PlayerCharacter = null;
+    hand:    Hand = null;
+    sandbag: Sandbag = null;
 
     preload() {
         this.load.image('fighter', 'assets/fighter.jpg');
@@ -17,9 +18,13 @@ export class Demo extends Scene {
     }
 
     create() {
-        this.player = new PlayerCharacter(this, 0, 0);
+        // Instantiate the player character and their hand/cards.
+        this.player = new PlayerCharacter(this, this.gameWidth / 2 - 200, this.gameHeight / 2);
         this.hand = new Hand(this, this.handPositionX, this.handPositionY);
         this.hand.draw();
+
+        // Create the dummy sandbag.
+        this.sandbag = new Sandbag(this, this.gameWidth / 2 + 200, this.gameHeight / 2);
     }
 
     private get handPositionX(): number
@@ -31,5 +36,4 @@ export class Demo extends Scene {
     {
         return this.gameHeight - this.handPositionX;
     }
-
 }
