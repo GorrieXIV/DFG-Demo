@@ -5,6 +5,7 @@ export class Demo extends Scene {
     player:  PlayerCharacter = null;
     hand:    Hand = null;
     sandbag: Sandbag = null;
+    fighterOffset: number = 200;
 
     preload() {
         this.load.image('fighter', 'assets/fighter.jpg');
@@ -19,12 +20,12 @@ export class Demo extends Scene {
 
     create() {
         // Instantiate the player character and their hand/cards.
-        this.player = new PlayerCharacter(this, this.gameWidth / 2 - 200, this.gameHeight / 2);
+        this.player = new PlayerCharacter(this, this.gameMiddle - this.fighterOffset, this.gameHeight / 2);
         this.hand = new Hand(this, this.handPositionX, this.handPositionY);
         this.hand.draw();
 
         // Create the dummy sandbag.
-        this.sandbag = new Sandbag(this, this.gameWidth / 2 + 200, this.gameHeight / 2);
+        this.sandbag = new Sandbag(this, this.gameMiddle + this.fighterOffset, this.gameHeight / 2);
         
         // Initialize the event dispatcher for this scene.
         this.eventDispatcher = new Phaser.Events.EventEmitter();
@@ -39,4 +40,5 @@ export class Demo extends Scene {
     {
         return this.gameHeight - this.handPositionX;
     }
+    
 }
