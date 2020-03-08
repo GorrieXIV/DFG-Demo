@@ -1,8 +1,6 @@
 import { CharacterGameObject } from "../Objects/base";
 
 export abstract class Scene extends Phaser.Scene {
-    // Create an event dispatcher for the given scene.
-    eventDispatcher: Phaser.Events.EventEmitter = null;;
 
     public get gameWidth(): number {
         return this.gameConfig.width as number;

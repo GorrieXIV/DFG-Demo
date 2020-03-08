@@ -33,10 +33,11 @@ export class Demo extends Scene {
         this.hand.draw();
 
         // Create the dummy sandbag.
-        this.sandbag = new Sandbag(this, this.gameMiddle + this.fighterOffset, this.gameHeight / 2);
-        
-        // Initialize the event dispatcher for this scene.
-        this.eventDispatcher = new Phaser.Events.EventEmitter();
+        this.sandbag = new Sandbag(
+            this,
+            this.gameMiddle + this.fighterOffset,
+            this.gameHeight / 2
+        );
     }
 
     update() {
