@@ -1,6 +1,7 @@
 import { GameObject } from './base';
-import { Card } from './card';
+import { Card, WeakAttackCard, StrongAttackCard, GrabCard } from './card';
 import { Scene } from '../Scenes';
+import { randomIntFromRange } from '../Math';
 
 export class Hand extends GameObject {
 
@@ -28,12 +29,34 @@ export class Hand extends GameObject {
             {
                 if (!this.cards[i])
                 {
-                    this.cards[i] = new Card(
-                        this.scene,
-                        this.getPositionFromIndex(i),
-                        this.sprite.y
-                    );
-                    console.log(`draw card at position ${i}`);
+                    let randomInt = randomIntFromRange(1,3);
+                    let randomCard: WeakAttackCard | StrongAttackCard | GrabCard;
+                    let spriteX = this.getPositionFromIndex(i);
+                    switch (randomInt)
+                    {
+                        case 1:
+                            randomCard = new WeakAttackCard(
+                                this.scene,
+                                spriteX,
+                                this.sprite.y
+                            );
+                            break;
+                        case 2:
+                            randomCard = new StrongAttackCard(
+                                this.scene,
+                                spriteX,
+                                this.sprite.y
+                            );
+                            break;
+                        default:
+                            randomCard = new GrabCard(
+                                this.scene,
+                                spriteX,
+                                this.sprite.y
+                            );
+                            break;
+                    }
+                    this.cards[i] = randomCard;
                 }
             }
             console.log(this.cards);
