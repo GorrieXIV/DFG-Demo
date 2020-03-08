@@ -6,13 +6,11 @@ export class GameObject extends Phaser.GameObjects.GameObject {
     sprite: Phaser.GameObjects.Sprite = null;
     scene: Scene = null;
 
-    constructor(scene: Scene, type: string, x: number, y: number) {
+    constructor(scene: Scene, type: string, x: number, y: number, visible: boolean = true) {
         super(scene, type);
-
         this.scene = scene;
-
         this.sprite = this.scene.add.sprite(x, y, type);
-
+        this.sprite.visible = visible;
         console.log(`${type} constructed at (${this.sprite.x}, ${this.sprite.x})`);
     }
 

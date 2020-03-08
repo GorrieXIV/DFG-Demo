@@ -9,7 +9,7 @@ export class Hand extends GameObject {
 
 
     constructor(scene: Scene, x: number, y: number) {
-        super(scene, 'hand', x, y);
+        super(scene, 'hand', x, y, false);
     }
 
     public emptyHand()
@@ -42,7 +42,11 @@ export class Hand extends GameObject {
 
     private getPositionFromIndex(index: number) : number
     {
-        return this.scene.game.canvas.width / (Hand.max + 1 - index);
+        let val = (this.scene.gameWidth / (Hand.max + 1)) * (index + 1);
+        console.log(val);
+        console.log(index);
+        console.log(this.scene.gameWidth);
+        return val;
     }
 
 }

@@ -11,3 +11,8 @@ export class Vector2 {
         return `[${this.x}, ${this.y}]`;
     }
 }
+
+export function randomIntFromRange(min, max) 
+{
+    return Math.floor(Math.random() * (max - min + 1) + min);
+}
