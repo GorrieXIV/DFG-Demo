@@ -10,18 +10,12 @@ export class DFG extends Phaser.Game {
         let renderer: number = Phaser.AUTO;
 
         // init game
-        super(
-            {
-                type: renderer,
-
-                parent: "game_container",
-
-                width: 1080,
-                height: 1920,
-                backgroundColor: "#FFFFFF",
-                title: "DFG Demo",
-            }
-        );
+        super({type:            renderer,
+               parent:          "game_container",
+               width:           1080,
+               height:          1920,
+               backgroundColor: "#FFFFFF",
+               title:           "DFG Demo"});
 
         // states
         this.scene.add("Boot", Boot);

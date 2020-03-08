@@ -14,8 +14,6 @@ export class Demo extends Scene {
 
         // this.add.shader('Plasma', 0, 412, 800, 172).setOrigin(0);
 
-        this.add.image(400, 300, 'player');
-
         // const logo = this.add.image(400, 70, 'logo');
 
         // this.tweens.add({
