@@ -3,11 +3,20 @@ export class Scene extends Phaser.Scene {
     //public textureManager = new Phaser.Textures.TextureManager(this.sys.game);
 
     public get gameWidth(): number {
-        return this.sys.game.config.width as number;
+        return this.gameConfig.width as number;
+    }
+
+    public get gameMiddle(): number {
+        return this.gameWidth / 2;
     }
 
     public get gameHeight(): number {
-        return this.sys.game.config.height as number;
+        return this.gameConfig.height as number;
+    }
+
+    private get gameConfig() : Phaser.Core.Config
+    {
+        return this.sys.game.config;
     }
 
     protected setView(): void {
