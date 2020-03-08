@@ -5,9 +5,9 @@ export class PlayerCharacter extends CharacterGameObject {
     constructor(scene: Scene, x: number, y: number) {
         super(scene, 'fighter', x, y);
 
-        this.setInteractive().on('weakAttack', this.performWeakAttack, this);
-        this.setInteractive().on('strongAttack', this.performStrongAttack, this);
-        this.setInteractive().on('grab', this.performGrab, this);
+        this.on('weakattack', this.performWeakAttack, this);
+        this.on('strongattack', this.performStrongAttack, this);
+        this.on('grab', this.performGrab, this);
 
     }
 
