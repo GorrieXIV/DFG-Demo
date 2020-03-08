@@ -1,6 +1,13 @@
 import { Vector2 } from '../Math/types';
 import { Scene } from '../Scenes/base';
 
+export enum CharacterStatus
+{
+    Neutral,
+    Attacking,
+    Blocking,
+}
+
 export class GameObject extends Phaser.GameObjects.GameObject {
 
     sprite: Phaser.GameObjects.Sprite = null;
@@ -18,4 +25,13 @@ export class GameObject extends Phaser.GameObjects.GameObject {
         this.sprite.setPosition(x, y);
     }
 
+}
+
+export class CharacterGameObject extends GameObject
+{
+    status: CharacterStatus = CharacterStatus.Neutral;
+    constructor(scene: Scene, type: string, x: number, y: number)
+    {
+        super(scene, type, x, y);
+    }
 }
