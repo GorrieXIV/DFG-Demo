@@ -19,35 +19,52 @@ export class Card extends GameObject {
 
     constructor(scene: Scene, type: string, x: number, y: number) {
         super(scene, type, x, y);
-        this.sprite.setScale(0.8);
-        this.sprite.setInteractive().on('pointerdown', this.onClick, this);
-        scene.events.on('cooldown', this.disableCard, this);
+        this.adjustSizeOfCards();
+        this.bindEventsToFunctions();
+    }
 
+    bindEventsToFunctions()
+    {
+        this.sprite.setInteractive().on('pointerdown', this.onClick, this);
+        this.scene.events.on('cooldown', this.disableCard, this);
+    }
+
+    adjustSizeOfCards()
+    {
+        this.sprite.setScale(0.8);
     }
 
     disableCard(card: AttackCard)
     {
-        if (this.disabled) 
-        {
-            console.log('waiting for cooldowns');
-            return;
-        }
+        if (this.disabled) return;
         this.disabled = true;
-        let visibility = this.index === card.index ? 0 : 0.5;
-        this.sprite.setAlpha(visibility);
+        let cardIsNewCard: boolean = this.index === card.index;
+        if (cardIsNewCard) this.makeCardInvisible();
+        else this.makeCardTranslucent();
+        this.enableCardAfterCooldown(card.cooldown);
+    }
+
+    makeCardInvisible()
+    {
+        this.sprite.setAlpha(0);
+    }
+
+    makeCardTranslucent()
+    {
+        this.sprite.setAlpha(0.5);
+    }
+
+    enableCardAfterCooldown(cooldown: number, modifier = this.cooldownModifier)
+    {
         setTimeout(() => {
             this.disabled = false;
             this.sprite.setAlpha(1);
-        }, card.cooldown * this.cooldownModifier);
+        }, cooldown * modifier);
     }
 
     onClick()
     {
-        if (this.disabled) 
-        {
-            console.log('waiting for cooldowns');
-            return;
-        }
+        if (this.disabled) return;
         this.scene.events.emit('beginplay', this);
         this.sprite.destroy();
     }
