@@ -1,5 +1,5 @@
 import { GameObject } from './base';
-import { Card, AttackCard, WeakAttackCard, StrongAttackCard, GrabCard } from './card';
+import { Card, AttackCard, WeakAttackCard, StrongAttackCard, GrabCard, CardType } from './card';
 import { Scene } from '../Scenes';
 import { randomIntFromRange } from '../Math';
 
@@ -11,14 +11,20 @@ export class Hand extends GameObject {
 
     constructor(scene: Scene, x: number, y: number) {
         super(scene, 'hand', x, y, false);
-        scene.events.on('playcard', this.replaceCard, this);
+        scene.events.on('beginplay', this.playCard, this);
     }
 
-    public replaceCard(card: AttackCard)
+    public playCard(card: AttackCard)
     {
-        console.log("DELETE THIS CARD")
-        console.log(card);
-        //do magic here
+        let playedCard = this.cards[card.index];
+        this.cards[card.index] = null;
+        this.draw();
+        switch(playedCard.cardType)
+        {
+            case CardType.Attack:
+                this.scene.events.emit("attack", playedCard);
+                break;
+        }
     }
 
     public emptyHand()

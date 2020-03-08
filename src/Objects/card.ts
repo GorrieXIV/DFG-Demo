@@ -25,7 +25,7 @@ export class Card extends GameObject {
 
     }
 
-    disableCard(cooldown: number)
+    disableCard(card: AttackCard)
     {
         if (this.disabled) 
         {
@@ -33,11 +33,12 @@ export class Card extends GameObject {
             return;
         }
         this.disabled = true;
-        this.sprite.setAlpha(0.5);
+        let visibility = this.index === card.index ? 0 : 0.5;
+        this.sprite.setAlpha(visibility);
         setTimeout(() => {
             this.disabled = false;
             this.sprite.setAlpha(1);
-        }, cooldown * this.cooldownModifier);
+        }, card.cooldown * this.cooldownModifier);
     }
 
     onClick()
@@ -47,14 +48,8 @@ export class Card extends GameObject {
             console.log('waiting for cooldowns');
             return;
         }
-        switch(this.cardType)
-        {
-            case CardType.Attack:
-                this.scene.events.emit('attack', this);
-                break
-        }
-        this.scene.events.emit('playcard', this);
-
+        this.scene.events.emit('beginplay', this);
+        this.sprite.destroy();
     }
 }
 

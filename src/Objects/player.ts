@@ -15,7 +15,7 @@ export class PlayerCharacter extends CharacterGameObject {
     }
 
     public performAttack(card: AttackCard) {
-        this.scene.events.emit('cooldown', card.cooldown);
+        this.scene.events.emit('cooldown', card);
         this.status = CharacterStatus.Attacking;
         let enemy = this.scene.getEnemy();
         // play animation
