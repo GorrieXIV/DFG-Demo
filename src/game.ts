@@ -1,5 +1,5 @@
 import 'phaser';
-import { Boot, Menu, Demo } from './Scenes';
+import { Boot, Menu, Demo, Result } from './Scenes';
 
 export class DFG extends Phaser.Game {
 
@@ -21,6 +21,7 @@ export class DFG extends Phaser.Game {
         this.scene.add("Boot", Boot);
         this.scene.add("Menu", Menu);
         this.scene.add("Demo", Demo);
+        this.scene.add("Result", Result);
 
         // start
         this.scene.start("Boot");
