@@ -8,6 +8,7 @@ export class Demo extends Scene {
     sandbag: Sandbag = null;
 
     fighterOffset: number = 200;
+    sandbagHp;
 
     preload() {
         this.load.image('fighter', 'assets/fighter.jpg');
@@ -40,18 +41,17 @@ export class Demo extends Scene {
         );
 
         // Create the sandbag's health bar.
-        let sandbagHp = this.add.sprite(100,100,'sandbagHpBar');
-        console.log(`Sandbag width = ${sandbagHp.width}`);
-        sandbagHp.setCrop(
-            sandbagHp.x,
-            sandbagHp.y,
-            (this.sandbag.health / this.sandbag.maxHealth) * sandbagHp.width,
-            sandbagHp.height
-        );
+        this.sandbagHp = this.add.sprite(100,100,'sandbagHpBar');
     }
 
     update() {
         this.player.update();
+        this.sandbagHp.setCrop(
+            0,
+            0,
+            (this.sandbag.health / this.sandbag.maxHealth) * this.sandbagHp.width,
+            this.sandbagHp.height
+        );
     }
 
     private get handPositionX(): number {
