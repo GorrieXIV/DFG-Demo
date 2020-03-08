@@ -36,5 +36,4 @@ export class Demo extends Scene {
     {
         return this.gameHeight - this.handPositionX;
     }
-
 }
