@@ -1,7 +1,8 @@
 import { GameObject } from './base';
+import { Scene } from '../Scenes/base';
 
 export class PlayerCharacter extends GameObject {
-    constructor(scene: Phaser.Scene, x: number, y: number) {
+    constructor(scene: Scene, x: number, y: number) {
         super(scene, 'player', x, y);
     }
 }
