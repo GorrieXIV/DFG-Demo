@@ -10,4 +10,5 @@ export class Card extends GameObject {
     constructor(scene: Scene, x: number, y: number) {
         super(scene, 'card', x, y);
     }
+
 }
