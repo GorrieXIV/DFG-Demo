@@ -25,6 +25,9 @@ export class Demo extends Scene {
 
         // Create the dummy sandbag.
         this.sandbag = new Sandbag(this, this.gameWidth / 2 + 200, this.gameHeight / 2);
+        
+        // Initialize the event dispatcher for this scene.
+        this.eventDispatcher = new Phaser.Events.EventEmitter();
     }
 
     private get handPositionX(): number

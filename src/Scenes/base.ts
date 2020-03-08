@@ -1,6 +1,6 @@
 export class Scene extends Phaser.Scene {
-    // Create a static texture manager for all textures in the scene.
-    //public textureManager = new Phaser.Textures.TextureManager(this.sys.game);
+    // Create an event dispatcher for the given scene.
+    eventDispatcher: Phaser.Events.EventEmitter = null;;
 
     public get gameWidth(): number {
         return this.sys.game.config.width as number;
