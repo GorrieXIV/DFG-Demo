@@ -11,7 +11,6 @@ export class PlayerCharacter extends CharacterGameObject {
         this.sprite.setTexture(this.currentSprite);
 
         scene.events.on('attack', this.performAttack, this);
-
     }
 
     public performAttack(card: AttackCard) {
@@ -34,14 +33,15 @@ export class PlayerCharacter extends CharacterGameObject {
                     //              emeit player hit
                     break;
                 case CharacterStatus.Hitstun:
-                    this.scene.events.emit('enemyhit', card);
-                    this.scene.events.emit('enemycombo', card);
+                    // Deal hit to enemy and continue combo.
+                    enemy.takeDamage(card.damage);
                     break;
                 case CharacterStatus.Blocking:
-                    this.scene.events.emit('enemyblock', card);
+                    // Enemy blocks damange.
                     break;
                 case CharacterStatus.Neutral:
-                    this.scene.events.emit('enemyhit', card);
+                    // Deal hit to enemy.
+                    enemy.takeDamage(card.damage);
                     break;
                 default:
                     // do nothing
