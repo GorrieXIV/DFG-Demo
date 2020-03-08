@@ -2,25 +2,22 @@ import { Vector2 } from '../Math/types';
 import { Scene } from '../Scenes/base';
 
 export class GameObject extends Phaser.GameObjects.GameObject {
-    position: Vector2 = new Vector2(0, 0);
+
     sprite: Phaser.GameObjects.Sprite = null;
     scene: Scene = null;
 
     constructor(scene: Scene, type: string, x: number, y: number) {
         super(scene, type);
 
-        this.position.x = x;
-        this.position.y = y;
         this.scene = scene;
 
-        this.scene.add.sprite(x, y, type);
+        this.sprite = this.scene.add.sprite(x, y, type);
 
-        console.log(`${type} constructed at ${this.position}`);
+        console.log(`${type} constructed at (${this.sprite.x}, ${this.sprite.x})`);
     }
 
     public move(x: number, y: number) {
-        this.position.x += x;
-        this.position.y += y;
-        this.scene.add.sprite(this.position.x, this.position.y, this.type); 
+        this.sprite.setPosition(x, y);
     }
+
 }

@@ -31,7 +31,7 @@ export class Hand extends GameObject {
                     this.cards[i] = new Card(
                         this.scene,
                         this.getPositionFromIndex(i),
-                        this.position.y
+                        this.sprite.y
                     );
                     console.log(`draw card at position ${i}`);
                 }

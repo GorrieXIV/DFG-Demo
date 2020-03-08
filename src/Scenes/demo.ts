@@ -17,7 +17,7 @@ export class Demo extends Scene {
     }
 
     create() {
-        this.player = new PlayerCharacter(this, 400, 300);
+        this.player = new PlayerCharacter(this, 0, 0);
         this.hand = new Hand(this, this.handPositionX, this.handPositionY);
         this.hand.draw();
     }
@@ -32,7 +32,4 @@ export class Demo extends Scene {
         return this.gameHeight - this.handPositionX;
     }
 
-    update() {
-        this.player.move(5, 5);
-    }
 }
