@@ -32,7 +32,13 @@ export class GameObject extends Phaser.GameObjects.GameObject {
 export class CharacterGameObject extends GameObject
 {
     status: CharacterStatus = CharacterStatus.Neutral;
+    health: number = 20;
     constructor(scene: Scene, type: string, x: number, y: number) {
         super(scene, type, x, y);
+    }
+
+    public takeDamage(damage: number) {
+        this.health -= damage;
+        console.log(`${this.type} took ${damage} damage! Now at ${this.health} HP.`);
     }
 }
