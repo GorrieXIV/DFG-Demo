@@ -16,6 +16,16 @@ export class Demo extends Scene {
 
     create() {
         let player: PlayerCharacter = new PlayerCharacter(this, 400, 300);
-        let hand: Hand = new Hand(this, 400, 300);
+        let hand: Hand = new Hand(this, this.handPositionX, this.handPositionY);
+    }
+
+    private get handPositionX(): number
+    {
+        return this.gameWidth / 5;
+    }
+
+    private get handPositionY(): number
+    {
+        return this.gameHeight - this.handPositionX;
     }
 }
