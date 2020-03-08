@@ -14,13 +14,10 @@ export class Card extends GameObject {
 
     constructor(scene: Scene, type: string, x: number, y: number) {
         super(scene, type, x, y);
-
     }
-
 }
 
 export class WeakAttackCard extends Card {
-
     constructor(scene: Scene, x: number, y: number) {
         super(scene, 'weakattackcard', x, y);        
         this.title = "Weak Attack";
@@ -28,13 +25,10 @@ export class WeakAttackCard extends Card {
         this.damage = 2;
         this.cooldown = 2;
         this.setInteractive().on('click', () => this.emit('weakattack', this));
-
     }
-
 }
 
 export class StrongAttackCard extends Card {
-
     constructor(scene: Scene, x: number, y: number) {
         super(scene, 'strongattackcard', x, y);
         this.title = "Strong Attack";
@@ -42,13 +36,10 @@ export class StrongAttackCard extends Card {
         this.damage = 3;
         this.cooldown = 3;
         this.setInteractive().on('click', () => this.emit('strongattack', this));
-
     }
-
 }
 
 export class GrabCard extends Card {
-
     constructor(scene: Scene, x: number, y: number) {
         super(scene, 'grabcard', x, y);
         this.title = "Grab";
@@ -56,7 +47,5 @@ export class GrabCard extends Card {
         this.damage = 1;
         this.cooldown = 1;
         this.setInteractive().on('click', () => this.emit('grab', this));
-
     }
-
 }

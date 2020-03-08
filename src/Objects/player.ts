@@ -12,14 +12,14 @@ export class PlayerCharacter extends CharacterGameObject {
     }
 
     public performWeakAttack() {
-
+        console.log('performing weak attack...');
     }
 
     public performStrongAttack() {
-
+        console.log('performing strong attack...');
     }
 
     public performGrab() {
-
+        console.log('performing grab...');
     }
 }
