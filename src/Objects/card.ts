@@ -13,15 +13,42 @@ export class Card extends GameObject {
     cardType: CardType; 
     damage:   number;
     cooldown: number;
+    disabled: boolean = false;
+    index: number;
+    cooldownModifier: number = 200;
 
     constructor(scene: Scene, type: string, x: number, y: number) {
         super(scene, type, x, y);
-        this.sprite.setInteractive().on('pointerdown', this.emitAttack, this);
+        this.sprite.setInteractive().on('pointerdown', this.onClick, this);
+        scene.events.on('cooldown', this.disableCard, this);
+
     }
 
-    emitAttack()
+    disableCard(cooldown: number)
     {
-        this.scene.events.emit('attack', this);
+        this.disabled = true;
+        this.sprite.setAlpha(0.5);
+        setTimeout(() => {
+            this.disabled = false;
+            this.sprite.setAlpha(1);
+        }, cooldown * this.cooldownModifier);
+    }
+
+    onClick()
+    {
+        if (this.disabled) 
+        {
+            console.log('waiting for cooldowns');
+            return;
+        }
+        this.scene.events.emit('playcard', this.index);
+        switch(this.cardType)
+        {
+            case CardType.Attack:
+                this.scene.events.emit('attack', this);
+                break
+        }
+
     }
 }
 

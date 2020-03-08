@@ -11,6 +11,13 @@ export class Hand extends GameObject {
 
     constructor(scene: Scene, x: number, y: number) {
         super(scene, 'hand', x, y, false);
+        scene.events.on('playcard', this.replayCard, this);
+    }
+
+    public replayCard(index: number)
+    {
+        this.cards[index] = null;
+        this.draw();
     }
 
     public emptyHand()
@@ -22,45 +29,42 @@ export class Hand extends GameObject {
     public draw()
     {
         if (!this.cards) this.emptyHand();
-        if (this.cards.length >= Hand.max) console.log("Hand is full");
-        else
+        for (let i = 0; i < Hand.max; i++)
         {
-            for (let i = 0; i < Hand.max; i++)
+            if (!this.cards[i])
             {
-                if (!this.cards[i])
+                let randomInt = randomIntFromRange(1,3);
+                let randomCard: AttackCard;
+                let spriteX = this.getPositionFromIndex(i);
+                switch (randomInt)
                 {
-                    let randomInt = randomIntFromRange(1,3);
-                    let randomCard: AttackCard;
-                    let spriteX = this.getPositionFromIndex(i);
-                    switch (randomInt)
-                    {
-                        case 1:
-                            randomCard = new WeakAttackCard(
-                                this.scene,
-                                spriteX,
-                                this.sprite.y
-                            );
-                            break;
-                        case 2:
-                            randomCard = new StrongAttackCard(
-                                this.scene,
-                                spriteX,
-                                this.sprite.y
-                            );
-                            break;
-                        default:
-                            randomCard = new GrabCard(
-                                this.scene,
-                                spriteX,
-                                this.sprite.y
-                            );
-                            break;
-                    }
-                    this.cards[i] = randomCard;
+                    case 1:
+                        randomCard = new WeakAttackCard(
+                            this.scene,
+                            spriteX,
+                            this.sprite.y
+                        );
+                        break;
+                    case 2:
+                        randomCard = new StrongAttackCard(
+                            this.scene,
+                            spriteX,
+                            this.sprite.y
+                        );
+                        break;
+                    default:
+                        randomCard = new GrabCard(
+                            this.scene,
+                            spriteX,
+                            this.sprite.y
+                        );
+                        break;
                 }
+                this.cards[i] = randomCard;
+                this.cards[i].index = i;
             }
-            console.log(this.cards);
         }
+        console.log(this.cards);
     }
 
     private getPositionFromIndex(index: number) : number
