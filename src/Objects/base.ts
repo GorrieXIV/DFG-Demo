@@ -31,14 +31,23 @@ export class GameObject extends Phaser.GameObjects.GameObject {
 
 export class CharacterGameObject extends GameObject
 {
-    status: CharacterStatus = CharacterStatus.Neutral;
-    health: number = 20;
+    status:    CharacterStatus = CharacterStatus.Neutral;
+    maxHealth: number = 20;
+    health:    number = 20;
+
     constructor(scene: Scene, type: string, x: number, y: number) {
         super(scene, type, x, y);
     }
 
     public takeDamage(damage: number) {
-        this.health -= damage;
-        console.log(`${this.type} took ${damage} damage! Now at ${this.health} HP.`);
+        if (this.health > 0) {
+            this.health -= damage;
+            console.log(`${this.type} took ${damage} damage! Now at ${this.health} HP.`);
+        }
+
+        if (this.health <= 0) {
+            this.health = 0;
+            console.log(`${this.type} defeated!`);
+        }
     }
 }

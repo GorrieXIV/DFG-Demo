@@ -38,6 +38,16 @@ export class Demo extends Scene {
             this.gameMiddle + this.fighterOffset,
             this.gameHeight / 2
         );
+
+        // Create the sandbag's health bar.
+        let sandbagHp = this.add.sprite(100,100,'sandbagHpBar');
+        console.log(`Sandbag width = ${sandbagHp.width}`);
+        sandbagHp.setCrop(
+            sandbagHp.x,
+            sandbagHp.y,
+            (this.sandbag.health / this.sandbag.maxHealth) * sandbagHp.width,
+            sandbagHp.height
+        );
     }
 
     update() {
