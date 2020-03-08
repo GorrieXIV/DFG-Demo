@@ -1,4 +1,6 @@
-export class Scene extends Phaser.Scene {
+import { CharacterGameObject } from "../Objects/base";
+
+export abstract class Scene extends Phaser.Scene {
     // Create an event dispatcher for the given scene.
     eventDispatcher: Phaser.Events.EventEmitter = null;;
 
@@ -23,4 +25,6 @@ export class Scene extends Phaser.Scene {
         // focus on center
         this.cameras.main.centerOn(0, 0);
     }
+
+    public abstract getEnemy(): CharacterGameObject;
 }

@@ -6,6 +6,8 @@ export enum CharacterStatus
     Neutral,
     Attacking,
     Blocking,
+    Hitstun,
+    Grounded
 }
 
 export class GameObject extends Phaser.GameObjects.GameObject {

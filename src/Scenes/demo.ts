@@ -1,5 +1,6 @@
 ﻿import { Scene } from './base';
 import { PlayerCharacter, Sandbag, Card, Hand } from '../Objects';
+import { CharacterGameObject } from '../Objects/base';
 
 export class Demo extends Scene {
     player:  PlayerCharacter = null;
@@ -39,6 +40,11 @@ export class Demo extends Scene {
     private get handPositionY(): number
     {
         return this.gameHeight - this.handPositionX;
+    }
+
+    public getEnemy(): CharacterGameObject
+    {
+        return this.sandbag;
     }
     
 }

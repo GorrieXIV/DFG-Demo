@@ -1,5 +1,5 @@
 import { GameObject } from './base';
-import { Card, WeakAttackCard, StrongAttackCard, GrabCard } from './card';
+import { Card, AttackCard, WeakAttackCard, StrongAttackCard, GrabCard } from './card';
 import { Scene } from '../Scenes';
 import { randomIntFromRange } from '../Math';
 
@@ -30,7 +30,7 @@ export class Hand extends GameObject {
                 if (!this.cards[i])
                 {
                     let randomInt = randomIntFromRange(1,3);
-                    let randomCard: WeakAttackCard | StrongAttackCard | GrabCard;
+                    let randomCard: AttackCard;
                     let spriteX = this.getPositionFromIndex(i);
                     switch (randomInt)
                     {
@@ -65,11 +65,7 @@ export class Hand extends GameObject {
 
     private getPositionFromIndex(index: number) : number
     {
-        let val = (this.scene.gameWidth / (Hand.max + 1)) * (index + 1);
-        console.log(val);
-        console.log(index);
-        console.log(this.scene.gameWidth);
-        return val;
+        return (this.scene.gameWidth / (Hand.max + 1)) * (index + 1);
     }
 
 }
