@@ -3,8 +3,12 @@ import { Scene } from '../Scenes/base';
 import { AttackCard } from './card';
 
 export class PlayerCharacter extends CharacterGameObject {
+    idleIncrement: number = 0;
+    currentSprite: string = 'fighter_idle1';
+
     constructor(scene: Scene, x: number, y: number) {
         super(scene, 'fighter', x, y);
+        this.sprite.setTexture(this.currentSprite);
 
         scene.events.on('attack', this.performAttack, this);
 
@@ -46,6 +50,20 @@ export class PlayerCharacter extends CharacterGameObject {
             
         }
         console.log(card);
+    }
+
+    public update() {
+        this.idleIncrement += 1;
+        if (this.idleIncrement >= 60) {
+            this.idleIncrement = 0;
+            if (this.currentSprite === 'fighter_idle1') {
+                this.currentSprite = 'fighter_idle2';
+                this.sprite.setTexture(this.currentSprite);
+            } else {
+                this.currentSprite = 'fighter_idle1';
+                this.sprite.setTexture(this.currentSprite);
+            }
+        }
     }
 
     public get enemyInRange(): boolean

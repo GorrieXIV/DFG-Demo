@@ -37,4 +37,7 @@ export class Menu extends Scene
         this.scene.start("Demo");
     }
 
+    public getEnemy() {
+        return null;
+    }
 }

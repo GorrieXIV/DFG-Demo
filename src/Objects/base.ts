@@ -32,8 +32,7 @@ export class GameObject extends Phaser.GameObjects.GameObject {
 export class CharacterGameObject extends GameObject
 {
     status: CharacterStatus = CharacterStatus.Neutral;
-    constructor(scene: Scene, type: string, x: number, y: number)
-    {
+    constructor(scene: Scene, type: string, x: number, y: number) {
         super(scene, type, x, y);
     }
 }
