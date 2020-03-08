@@ -1,5 +1,6 @@
 import { GameObject } from './base';
 import { Card } from './card';
+import { Scene } from '../Scenes';
 
 export class Hand extends GameObject {
 
@@ -8,7 +9,7 @@ export class Hand extends GameObject {
     y: number;
 
 
-    constructor(scene: Phaser.Scene, x: number, y: number) {
+    constructor(scene: Scene, x: number, y: number) {
         super(scene, 'hand', x, y);
         this.y = y;
     }
@@ -39,7 +40,7 @@ export class Hand extends GameObject {
 
     private getPositionFromIndex(index: number) : number
     {
-        return this.scene.sys.game.canvas.width / (this.max + 1 - index);
+        return this.scene.game.canvas.width / (this.max + 1 - index);
     }
 
 }
